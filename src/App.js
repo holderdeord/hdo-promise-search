@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 
 import {
   SearchkitManager,
@@ -15,15 +15,18 @@ import {
   SelectedFilters,
   SearchBox,
   Hits,
-  RefinementListFilter
+  NoHits,
+  RefinementListFilter,
+  Pagination
 } from 'searchkit';
 
-import 'searchkit/release/theme.css';
-
+import translations from './translations';
 const sk = new SearchkitManager('https://search.holderdeord.no/hdo_production_promises/')
 
-const Promise = (props) => (
-  <div style={{padding: '1rem'}}>
+sk.translateFunction = (key) => translations[key]
+
+const PromiseItem = (props) => (
+  <div style={{padding: '.5rem 1rem'}}>
     {props.result._source.body}
   </div>
 )
@@ -32,7 +35,11 @@ export default () => (
   <SearchkitProvider searchkit={sk}>
     <Layout>
       <TopBar>
-        <SearchBox autofocus searchOnChange />
+        <SearchBox
+          autofocus
+          searchOnChange
+          prefixQueryFields={["body"]}
+        />
       </TopBar>
 
       <LayoutBody>
@@ -67,7 +74,9 @@ export default () => (
             </ActionBarRow>
           </ActionBar>
 
-          <Hits hitsPerPage={10} itemComponent={Promise} />
+          <Hits hitsPerPage={30} itemComponent={PromiseItem} />
+          <NoHits suggestionsField="body" />
+          <Pagination showNumbers={true}/>
         </LayoutResults>
       </LayoutBody>
     </Layout>
