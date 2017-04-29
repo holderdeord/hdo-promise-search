@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 
 import {
@@ -48,6 +48,13 @@ export default () => (
             id="parties"
             title="Partier og regjeringer"
             field="promisor_name"
+            size={10}
+          />
+
+          <RefinementListFilter
+            id="categories"
+            title="Kategorier"
+            field="category_names"
             size={10}
           />
         </SideBar>
