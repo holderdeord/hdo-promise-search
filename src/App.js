@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.scss';
+import _ from 'lodash';
 
 import {
   SearchkitManager,
@@ -27,7 +28,11 @@ sk.translateFunction = (key) => translations[key]
 
 const PromiseItem = (props) => (
   <div style={{padding: '.5rem 1rem'}}>
-    {props.result._source.body}
+    <div style={{color: "#777"}}></div>
+
+    <div dangerouslySetInnerHTML={{
+        __html: _.get(props.result,"highlight.body",props.result._source.body)
+    }} />
   </div>
 )
 
@@ -74,7 +79,11 @@ export default () => (
             </ActionBarRow>
           </ActionBar>
 
-          <Hits hitsPerPage={30} itemComponent={PromiseItem} />
+          <Hits
+            hitsPerPage={30}
+            highlightFields={["body"]}
+            itemComponent={PromiseItem}
+          />
           <NoHits suggestionsField="body" />
           <Pagination showNumbers={true}/>
         </LayoutResults>

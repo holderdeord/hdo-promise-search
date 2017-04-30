@@ -70,3 +70,9 @@ $sk-list-secondary-text-color: #777;
 .sk-panel__header {
   font-family: $font-family-serif;
 }
+
+.sk-hits em {
+  background-color: $hdo-highlight-color;
+  font-style: normal;
+  color: black;
+}
