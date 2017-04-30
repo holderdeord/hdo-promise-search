@@ -71,8 +71,12 @@ $sk-list-secondary-text-color: #777;
   font-family: $font-family-serif;
 }
 
-.sk-hits em {
+.sk-hits mark {
   background-color: $hdo-highlight-color;
   font-style: normal;
   color: black;
+}
+
+.promise-item {
+  padding: .5rem 1rem;
 }

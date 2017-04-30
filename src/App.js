@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.scss';
-import _ from 'lodash';
 
 import {
   SearchkitManager,
@@ -21,73 +20,73 @@ import {
   Pagination
 } from 'searchkit';
 
-import translations from './translations';
-const sk = new SearchkitManager('https://search.holderdeord.no/hdo_production_promises/')
+import PromiseItem from './PromiseItem';
 
+import {
+    translations,
+    customHighlight
+} from './utils';
+
+const sk = new SearchkitManager('https://search.holderdeord.no/hdo_production_promises/')
 sk.translateFunction = (key) => translations[key]
 
-const PromiseItem = (props) => (
-  <div style={{padding: '.5rem 1rem'}}>
-    <div style={{color: "#777"}}></div>
-
-    <div dangerouslySetInnerHTML={{
-        __html: _.get(props.result,"highlight.body",props.result._source.body)
-    }} />
-  </div>
-)
-
 export default () => (
-  <SearchkitProvider searchkit={sk}>
-    <Layout>
-      <TopBar>
-        <SearchBox
-          autofocus
-          searchOnChange
-          prefixQueryFields={["body"]}
-        />
-      </TopBar>
+    <SearchkitProvider searchkit={sk}>
+        <Layout>
+            <TopBar>
+                <SearchBox
+                  autofocus
+                  searchOnChange
+                  prefixQueryFields={["body"]}
+                />
+            </TopBar>
 
-      <LayoutBody>
-        <SideBar>
-          <RefinementListFilter
-            id="period"
-            title="Stortingsperiode"
-            field="parliament_period_name"
-            size={10}
-          />
+            <LayoutBody>
+                <SideBar>
+                    <RefinementListFilter
+                      id="period"
+                      title="Stortingsperiode"
+                      field="parliament_period_name"
+                      size={10}
+                      orderKey="_term"
+                    />
 
-          <RefinementListFilter
-            id="parties"
-            title="Partier og regjeringer"
-            field="promisor_name"
-            size={10}
-          />
+                    <RefinementListFilter
+                      id="parties"
+                      title="Partier og regjeringer"
+                      field="promisor_name"
+                      size={10}
+                      operator="OR"
+                      orderKey="_term"
+                    />
 
-          <RefinementListFilter
-            id="categories"
-            title="Kategorier"
-            field="category_names"
-            size={10}
-          />
-        </SideBar>
+                    <RefinementListFilter
+                      id="categories"
+                      title="Kategorier"
+                      field="category_names"
+                      size={10}
+                    />
+                </SideBar>
 
-        <LayoutResults>
-          <ActionBar>
-            <ActionBarRow>
-              <HitsStats />
-              <SelectedFilters />
-            </ActionBarRow>
-          </ActionBar>
+                <LayoutResults>
+                    <ActionBar>
+                      <ActionBarRow>
+                        <HitsStats />
+                        <SelectedFilters />
+                      </ActionBarRow>
+                    </ActionBar>
 
-          <Hits
-            hitsPerPage={30}
-            highlightFields={["body"]}
-            itemComponent={PromiseItem}
-          />
-          <NoHits suggestionsField="body" />
-          <Pagination showNumbers={true}/>
-        </LayoutResults>
-      </LayoutBody>
-    </Layout>
-  </SearchkitProvider>
+                    <Hits
+                      hitsPerPage={30}
+                      highlightFields={["body"]}
+                      customHighlight={customHighlight}
+                      itemComponent={PromiseItem}
+                    />
+
+                    <NoHits suggestionsField="body" />
+                    <Pagination showNumbers={true}/>
+              </LayoutResults>
+            </LayoutBody>
+          </Layout>
+    </SearchkitProvider>
 );
