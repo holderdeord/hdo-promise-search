@@ -27,7 +27,8 @@ import {
     customHighlight
 } from './utils';
 
-const sk = new SearchkitManager('https://search.holderdeord.no/hdo_production_promises/')
+const sk = new SearchkitManager('https://search.holderdeord.no/hdo_production_promises/');
+
 sk.translateFunction = (key) => translations[key]
 
 export default () => (
@@ -44,27 +45,27 @@ export default () => (
             <LayoutBody>
                 <SideBar>
                     <RefinementListFilter
-                      id="period"
-                      title="Stortingsperiode"
-                      field="parliament_period_name"
-                      size={10}
-                      orderKey="_term"
+                        id="period"
+                        title="Stortingsperiode"
+                        field="parliament_period_name"
+                        size={10}
+                        orderKey="_term"
                     />
 
                     <RefinementListFilter
-                      id="parties"
-                      title="Partier og regjeringer"
-                      field="promisor_name"
-                      size={10}
-                      operator="OR"
-                      orderKey="_term"
+                        id="parties"
+                        title="Partier og regjeringer"
+                        field="promisor_name"
+                        size={10}
+                        operator="OR"
+                        orderKey="_term"
                     />
 
                     <RefinementListFilter
-                      id="categories"
-                      title="Kategorier"
-                      field="category_names"
-                      size={10}
+                        id="categories"
+                        title="Kategorier"
+                        field="category_names"
+                        size={10}
                     />
                 </SideBar>
 
