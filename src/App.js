@@ -2,22 +2,22 @@ import React from 'react';
 import './App.scss';
 
 import {
-  SearchkitManager,
-  SearchkitProvider,
-  Layout,
-  LayoutBody,
-  TopBar,
-  SideBar,
-  LayoutResults,
-  ActionBar,
-  ActionBarRow,
-  HitsStats,
-  SelectedFilters,
-  SearchBox,
-  Hits,
-  NoHits,
-  RefinementListFilter,
-  Pagination
+    SearchkitManager,
+    SearchkitProvider,
+    Layout,
+    LayoutBody,
+    TopBar,
+    SideBar,
+    LayoutResults,
+    ActionBar,
+    ActionBarRow,
+    HitsStats,
+    SelectedFilters,
+    SearchBox,
+    Hits,
+    NoHits,
+    RefinementListFilter,
+    Pagination
 } from 'searchkit';
 
 import PromiseItem from './PromiseItem';
