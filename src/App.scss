@@ -86,20 +86,28 @@ $sk-list-secondary-text-color: #777;
         display: block;
     }
     .sk-layout__filters {
-        display:none;
-        padding: 0;
-        margin: 0;
-        border: none;
+        padding: 15px;
+        margin: 15px;
+        margin-bottom: 0;
     }
     .sk-layout__results {
         min-width: none;
         margin-bottom: 0;
         border-bottom: 15px solid $hdo-background-against-white;
     }
-    .sk-pagination-navigation {
-        width: 300px !important;
-    }
 }   
+
+@media(max-width: 649px){
+     .sk-pagination-navigation {
+        display:none;
+    }
+}
+
+@media(min-width: 650px){
+    .sk-pagination-select {
+        display: none;
+    }
+}
 
 
 

@@ -17,7 +17,8 @@ import {
     Hits,
     NoHits,
     RefinementListFilter,
-    Pagination
+    Pagination,
+    PaginationSelect
 } from 'searchkit';
 
 import PromiseItem from './PromiseItem';
@@ -85,7 +86,10 @@ export default () => (
                     />
 
                     <NoHits suggestionsField="body" />
-                    <Pagination showNumbers={true}/>
+
+                    <Pagination showNumbers={true} pageScope={1} showFirst={false} showText={true} />
+                    <PaginationSelect />
+
               </LayoutResults>
             </LayoutBody>
           </Layout>
