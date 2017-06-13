@@ -6,5 +6,9 @@ export default (props) => (
         <div dangerouslySetInnerHTML={{
             __html: _.get(props.result, "highlight.body", props.result._source.body)
         }} />
+
+        <small className="promise-details">
+            {props.result._source.parliament_period_name} / {props.result._id}
+        </small>
     </div>
 );

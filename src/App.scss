@@ -22,7 +22,7 @@ $hdo-outline-color: $hdo-steel-blue-extra-dark;
 
 $font-family-sans-serif: "Lato", -apple-system, BlinkMacSystemFont,
     "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
-    "Fira Sans", "Droid Sans", "Helvetica Neue",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, arial,
     sans-serif;
 
 $font-family-serif: "Roboto Slab", Palatino, "Times New Roman", serif;
@@ -79,7 +79,13 @@ $sk-list-secondary-text-color: #777;
 
 .promise-item {
     padding: .5rem 1rem;
+
+    .promise-details {
+        color: $sk-text-secondary-color;
+    }
 }
+
+
 @media(max-width: 940px){
     .sk-layout__body {
         min-width: 0;
@@ -95,7 +101,7 @@ $sk-list-secondary-text-color: #777;
         margin-bottom: 0;
         border-bottom: 15px solid $hdo-background-against-white;
     }
-}   
+}
 
 @media(max-width: 649px){
      .sk-pagination-navigation {
