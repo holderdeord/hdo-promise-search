@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import qs from 'query-string';
+import cn from 'classnames';
 
 import {
     SearchkitManager,
@@ -33,8 +34,8 @@ searchkit.translateFunction = (key) => translations[key]
 
 export default class Search extends Component {
     state = {
-        sidebarToggle: null
-    }
+        filtersShown: false
+    };
 
     componentDidMount() {
         const accessor = searchkit.accessors.queryAccessor;
@@ -60,10 +61,15 @@ export default class Search extends Component {
                                 searchOnChange
                                 prefixQueryFields={["body"]}
                             />
+
+                            <div
+                                className="filter-button"
+                                onClick={() => this.setState({filtersShown: !this.state.filtersShown})}
+                            />
                         </TopBar>
 
                         <LayoutBody>
-                            <SideBar>
+                            <SideBar className={cn('filters', {'filters-hidden-md': !this.state.filtersShown})}>
                                 <RefinementListFilter
                                     id="period"
                                     title="Stortingsperiode"
