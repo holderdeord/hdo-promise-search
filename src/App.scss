@@ -17,6 +17,9 @@ $hdo-outline-color: $hdo-steel-blue-extra-dark;
 $font-family-sans-serif: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, arial, sans-serif;
 $font-family-serif: "Roboto Slab", Palatino, "Times New Roman", serif;
 
+$breakpoint-md: 650px;
+$breakpoint-lg: 940px;
+
 body {
     margin: 0;
     padding: 0;
@@ -101,12 +104,12 @@ $hdo-logo: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA2wAAAFfAgMAAABPc6f
 .sk-selected-filters {
     width: 100%;
 
-    @media (min-width: 650px) {
+    @media (min-width: $breakpoint-md) {
         width: auto;
     }
 }
 
-@media (max-width: 940px) {
+@media (max-width: $breakpoint-lg) {
     .filter_search_title {
         display: block;
         margin: 15px;
@@ -143,13 +146,13 @@ $hdo-logo: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA2wAAAFfAgMAAABPc6f
     }
 }
 
-@media (max-width: 649px) {
+@media (max-width: $breakpoint-md - 1px) {
     .sk-pagination-navigation {
         display: none;
     }
 }
 
-@media (min-width: 650px) {
+@media (min-width: $breakpoint-md) {
     .sk-pagination-select {
         display: none;
     }
@@ -164,7 +167,7 @@ header {
     padding: 1rem;
     text-align: center;
 
-    @media (min-width: 650px) {
+    @media (min-width: $breakpoint-md) {
         flex-direction: row;
         justify-content: space-between;
     }
@@ -202,7 +205,7 @@ header {
     .header-links {
         display: none;
 
-        @media (min-width: 650px) {
+        @media (min-width: $breakpoint-md) {
             display: block;
         }
 
