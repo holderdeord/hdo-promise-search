@@ -11,4 +11,4 @@ export default () => (
         <Search />
         <Footer />
     </div>
-);
+)

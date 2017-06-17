@@ -9,7 +9,7 @@ export default (props) => (
 
         <div>
             <h1>Løftebasen</h1>
-            <small>Alle valgløfter og regjeringserklæringer fra 2009 til i dag</small>
+            <small>Alle partiprogram og regjeringserklæringer fra 2009 til i dag</small>
         </div>
 
         <div className="header-links">

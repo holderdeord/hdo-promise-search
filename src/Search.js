@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
+import qs from 'query-string';
 
 import {
     SearchkitManager,
@@ -27,69 +28,92 @@ import {
     customHighlight
 } from './utils';
 
-const sk = new SearchkitManager('https://search.holderdeord.no/hdo_production_promises/');
-sk.translateFunction = (key) => translations[key]
+const searchkit = new SearchkitManager('https://search.holderdeord.no/hdo_production_promises/');
+searchkit.translateFunction = (key) => translations[key]
 
-export default (props) => (
-    <SearchkitProvider searchkit={sk}>
-        <Layout>
-            <TopBar>
-                <SearchBox
-                  autofocus
-                  searchOnChange
-                  prefixQueryFields={["body"]}
-                />
-            </TopBar>
-            <LayoutBody>
-                <SideBar>
-                    <RefinementListFilter
-                        id="period"
-                        title="Stortingsperiode"
-                        field="parliament_period_name"
-                        size={10}
-                        orderKey="_term"
-                    />
+export default class Search extends Component {
+    componentDidMount() {
+        const accessor = searchkit.accessors.queryAccessor;
+        const queryString = qs.parse(window.location.search.substring(1)).q;
 
-                    <RefinementListFilter
-                        id="parties"
-                        title="Partier og regjeringer"
-                        field="promisor_name"
-                        size={10}
-                        operator="OR"
-                        orderKey="_term"
-                    />
+        if (!queryString || !queryString.length) {
+            const exampleQueries = ["bompenger", "rushtidsavgift", "sexkjøpsloven", "atomvåpen", "formueskatt", "kontantstøtte", "oljeutvinning", "narkotika", "jernbane", "asylsøkere", "eiendomsskatt", "NATO", "EØS", "ulv", "ungdomsskolen", "lærere", "surrogati", "eggdonasjon", "arbeidsmiljøloven"]
+            const example = exampleQueries[Math.floor(Math.random() * exampleQueries.length)]
 
-                    <RefinementListFilter
-                        id="categories"
-                        title="Kategorier"
-                        field="category_names"
-                        size={10}
-                    />
-                </SideBar>
+            accessor.setQueryString(example);
+            searchkit.performSearch();
+        }
+    }
 
-                <LayoutResults>
-                    <ActionBar>
-                      <ActionBarRow>
-                        <HitsStats />
-                        <SelectedFilters />
-                      </ActionBarRow>
-                    </ActionBar>
+    render() {
+        return (
+            <SearchkitProvider searchkit={searchkit}>
+                <Layout>
+                    <TopBar>
+                        <SearchBox
+                            autofocus
+                            searchOnChange
+                            prefixQueryFields={["body"]}
+                        />
+                    </TopBar>
+                    <LayoutBody>
+                        <SideBar>
+                            <RefinementListFilter
+                                id="period"
+                                title="Stortingsperiode"
+                                field="parliament_period_name"
+                                size={10}
+                                orderKey="_term"
+                            />
 
-                    <Hits
-                      hitsPerPage={30}
-                      highlightFields={["body"]}
-                      customHighlight={customHighlight}
-                      itemComponent={PromiseItem}
-                    />
+                            <RefinementListFilter
+                                id="parties"
+                                title="Partier og regjeringer"
+                                field="promisor_name"
+                                size={10}
+                                operator="OR"
+                                orderKey="_term"
+                            />
 
-                    <NoHits suggestionsField="body" />
+                            <RefinementListFilter
+                                id="categories"
+                                title="Kategorier"
+                                field="category_names"
+                                size={10}
+                            />
+                        </SideBar>
 
-                    <Pagination showNumbers={true} pageScope={1} showFirst={false} showText={true} />
-                    <PaginationSelect />
+                        <LayoutResults>
+                            <ActionBar>
+                              <ActionBarRow>
+                                <HitsStats />
+                                <SelectedFilters />
+                              </ActionBarRow>
+                            </ActionBar>
 
-              </LayoutResults>
-            </LayoutBody>
-          </Layout>
-    </SearchkitProvider>
-);
+                            <Hits
+                              hitsPerPage={30}
+                              highlightFields={["body"]}
+                              customHighlight={customHighlight}
+                              itemComponent={PromiseItem}
+                            />
+
+                            <NoHits suggestionsField="body" />
+
+                            <Pagination
+                                showNumbers={true}
+                                pageScope={1}
+                                showFirst={false}
+                                showText={true}
+                            />
+
+                            <PaginationSelect />
+
+                      </LayoutResults>
+                    </LayoutBody>
+                  </Layout>
+            </SearchkitProvider>
+        );
+    }
+}
 
