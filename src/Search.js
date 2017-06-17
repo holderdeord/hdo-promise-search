@@ -32,12 +32,27 @@ import {
 const searchkit = new SearchkitManager('https://search.holderdeord.no/hdo_production_promises/');
 searchkit.translateFunction = (key) => translations[key]
 
+searchkit.setQueryProcessor(query => {
+    console.log(query);
+
+    if (!query.query) {
+        // empty query! sort by period name descending
+        query.sort = { parliament_period_name: { order: 'desc' }};
+    }
+
+    return query;
+});
+
 export default class Search extends Component {
     state = {
         filtersShown: false
     };
 
     componentDidMount() {
+        // this.performExampleQuery();
+    }
+
+    performExampleQuery() {
         const accessor = searchkit.accessors.queryAccessor;
         const queryString = qs.parse(window.location.search.slice(1)).q;
 
