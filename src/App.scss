@@ -91,7 +91,7 @@ header, .search {
     pointer: cursor;
 }
 
-@media (min-width: $breakpoint-md) {
+@media (min-width: $breakpoint-lg) {
     .filter-button { display: none; }
 }
 
