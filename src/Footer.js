@@ -7,7 +7,8 @@ export default (props) => (
             <h4>Holder de ord &copy; 2017</h4>
 
             <small>
-                Spørsmål? Ta <a href="mailto:kontakt@holderdeord.no">kontakt</a>.
+                <p><a href="https://files.holderdeord.no/data/csv/promises.csv">Last ned hele databasen som CSV.</a></p>
+                <p>Spørsmål? Ta <a href="mailto:kontakt@holderdeord.no">kontakt</a>.</p>
             </small>
 
             <div className="links">
