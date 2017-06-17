@@ -33,8 +33,6 @@ const searchkit = new SearchkitManager('https://search.holderdeord.no/hdo_produc
 searchkit.translateFunction = (key) => translations[key]
 
 searchkit.setQueryProcessor(query => {
-    console.log(query);
-
     if (!query.query) {
         // empty query! sort by period name descending
         query.sort = { parliament_period_name: { order: 'desc' }};
