@@ -39,7 +39,7 @@ export default class Search extends Component {
 
     componentDidMount() {
         const accessor = searchkit.accessors.queryAccessor;
-        const queryString = qs.parse(window.location.search.substring(1)).q;
+        const queryString = qs.parse(window.location.search.slice(1)).q;
 
         if (!queryString || !queryString.length) {
             const exampleQueries = ["bompenger", "rushtidsavgift", "sexkjøpsloven", "atomvåpen", "formueskatt", "kontantstøtte", "oljeutvinning", "narkotika", "jernbane", "asylsøkere", "eiendomsskatt", "NATO", "EØS", "ulv", "ungdomsskolen", "lærere", "surrogati", "eggdonasjon", "arbeidsmiljøloven"]
