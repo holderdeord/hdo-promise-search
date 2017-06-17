@@ -32,6 +32,10 @@ const searchkit = new SearchkitManager('https://search.holderdeord.no/hdo_produc
 searchkit.translateFunction = (key) => translations[key]
 
 export default class Search extends Component {
+    state = {
+        sidebarToggle: null
+    }
+
     componentDidMount() {
         const accessor = searchkit.accessors.queryAccessor;
         const queryString = qs.parse(window.location.search.substring(1)).q;
@@ -47,72 +51,75 @@ export default class Search extends Component {
 
     render() {
         return (
-            <SearchkitProvider searchkit={searchkit}>
-                <Layout>
-                    <TopBar>
-                        <SearchBox
-                            autofocus
-                            searchOnChange
-                            prefixQueryFields={["body"]}
-                        />
-                    </TopBar>
-                    <LayoutBody>
-                        <SideBar>
-                            <RefinementListFilter
-                                id="period"
-                                title="Stortingsperiode"
-                                field="parliament_period_name"
-                                size={10}
-                                orderKey="_term"
+            <div className="search">
+                <SearchkitProvider searchkit={searchkit}>
+                    <Layout>
+                        <TopBar>
+                            <SearchBox
+                                autofocus
+                                searchOnChange
+                                prefixQueryFields={["body"]}
                             />
+                        </TopBar>
 
-                            <RefinementListFilter
-                                id="parties"
-                                title="Partier og regjeringer"
-                                field="promisor_name"
-                                size={10}
-                                operator="OR"
-                                orderKey="_term"
-                            />
+                        <LayoutBody>
+                            <SideBar>
+                                <RefinementListFilter
+                                    id="period"
+                                    title="Stortingsperiode"
+                                    field="parliament_period_name"
+                                    size={10}
+                                    orderKey="_term"
+                                />
 
-                            <RefinementListFilter
-                                id="categories"
-                                title="Kategorier"
-                                field="category_names"
-                                size={10}
-                            />
-                        </SideBar>
+                                <RefinementListFilter
+                                    id="parties"
+                                    title="Partier og regjeringer"
+                                    field="promisor_name"
+                                    size={10}
+                                    operator="OR"
+                                    orderKey="_term"
+                                />
 
-                        <LayoutResults>
-                            <ActionBar>
-                              <ActionBarRow>
-                                <HitsStats />
-                                <SelectedFilters />
-                              </ActionBarRow>
-                            </ActionBar>
+                                <RefinementListFilter
+                                    id="categories"
+                                    title="Kategorier"
+                                    field="category_names"
+                                    size={10}
+                                />
+                            </SideBar>
 
-                            <Hits
-                              hitsPerPage={30}
-                              highlightFields={["body"]}
-                              customHighlight={customHighlight}
-                              itemComponent={PromiseItem}
-                            />
+                            <LayoutResults>
+                                <ActionBar>
+                                  <ActionBarRow>
+                                    <HitsStats />
+                                    <SelectedFilters />
+                                  </ActionBarRow>
+                                </ActionBar>
 
-                            <NoHits suggestionsField="body" />
+                                <Hits
+                                  hitsPerPage={30}
+                                  highlightFields={["body"]}
+                                  customHighlight={customHighlight}
+                                  itemComponent={PromiseItem}
+                                />
 
-                            <Pagination
-                                showNumbers={true}
-                                pageScope={1}
-                                showFirst={false}
-                                showText={true}
-                            />
+                                <NoHits suggestionsField="body" />
 
-                            <PaginationSelect />
+                                <Pagination
+                                    showNumbers={true}
+                                    pageScope={1}
+                                    showFirst={false}
+                                    showText={true}
+                                />
 
-                      </LayoutResults>
-                    </LayoutBody>
-                  </Layout>
-            </SearchkitProvider>
+                                <PaginationSelect />
+
+                          </LayoutResults>
+                        </LayoutBody>
+                      </Layout>
+                </SearchkitProvider>
+            </div>
         );
     }
 }
