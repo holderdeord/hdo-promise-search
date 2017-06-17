@@ -76,8 +76,13 @@ $filter-icon: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9
 
 @import "~searchkit/theming/theme.scss";
 
-header, .search {
+header {
     @extend .container;
+}
+
+.search {
+    @extend .container;
+    // box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28)
 }
 
 .filter-button {
@@ -104,6 +109,9 @@ header, .search {
 }
 
 .sk-search-box {
+    background: white;
+    margin: 0 15px;
+
     input.sk-search-box__text {
         color: $sk-text-color;
 

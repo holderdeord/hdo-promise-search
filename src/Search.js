@@ -7,7 +7,7 @@ import {
     SearchkitProvider,
     Layout,
     LayoutBody,
-    TopBar,
+    // TopBar,
     SideBar,
     LayoutResults,
     ActionBar,
@@ -68,18 +68,16 @@ export default class Search extends Component {
             <div className="search">
                 <SearchkitProvider searchkit={searchkit}>
                     <Layout>
-                        <TopBar>
-                            <SearchBox
-                                autofocus
-                                searchOnChange
-                                prefixQueryFields={["body"]}
-                            />
+                        <SearchBox
+                            autofocus
+                            searchOnChange
+                            prefixQueryFields={["body"]}
+                        />
 
-                            <div
-                                className="filter-button"
-                                onClick={() => this.setState({filtersShown: !this.state.filtersShown})}
-                            />
-                        </TopBar>
+                        <div
+                            className="filter-button"
+                            onClick={() => this.setState({filtersShown: !this.state.filtersShown})}
+                        />
 
                         <LayoutBody>
                             <SideBar className={cn('filters', {'filters-hidden-md': !this.state.filtersShown})}>
