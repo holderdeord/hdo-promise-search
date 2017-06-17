@@ -75,6 +75,7 @@ $hdo-logo: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA2wAAAFfAgMAAABPc6f
 
 .sk-top-bar {
 	position: relative;
+	background-color: $hdo-highlight-color;
 }
 
 .sk-panel__header {
@@ -84,7 +85,7 @@ $hdo-logo: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA2wAAAFfAgMAAABPc6f
 .sk-hits mark {
 	background-color: $hdo-highlight-color;
 	font-style: normal;
-	color: black;
+	color: #000;
 }
 
 .promise-item {
@@ -127,7 +128,21 @@ $hdo-logo: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA2wAAAFfAgMAAABPc6f
 		padding: 15px;
 		margin: 15px;
 		margin-bottom: 0;
+
+		max-height: 0;
+		overflow: hidden;
+		margin: 0;
+		padding: 0;
 	}
+
+	.btn {
+			background-color: #fff;
+			padding: 0.9rem 1.7rem;
+			border-radius: 4px;
+
+			margin: 2rem 15px 1rem;
+
+		}
 
 	.sk-layout__results {
 		min-width: none;
@@ -156,7 +171,7 @@ header {
     position: relative;
     padding: 1rem;
     text-align: center;
-    background-color: $hdo-background-against-white;
+    background-color: #fff;
     @media(min-width: 650px){
     	flex-direction: row;
     	justify-content: space-between;
@@ -184,8 +199,19 @@ header {
 	}
 	h1 {
 		font-family: $font-family-serif;
+		font-weight: 400;
+		margin-bottom: .2rem;
+		margin-top: 0;
+
+		.title-highlight {
+			background-color: $hdo-highlight-color;
+		}
 	}
 	.header-links {
+		display: none;
+		@media(min-width: 650px){
+    	display: block;
+    }
 		a {
 			text-decoration: none;
 			font-weight: 300;

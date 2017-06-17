@@ -39,7 +39,10 @@ export default () => (
                 Holder de ord 
                 <a href="https://www.holderdeord.no/portal" title="tilbake til hovedsiden" className="hdo-logo-link"></a>
             </div>
-            <h1>Løftedatabasen</h1>
+            <div> 
+                <h1>Løftedatabasen</h1>
+                <small>Alle valgløfter og regjeringserklæringer fra 2009 til i dag</small>
+            </div>
             <div className="header-links">
                 <a href="https://www.holderdeord.no/portal/om-oss">Om oss</a>
                 <a href="https://www.holderdeord.no/portal/stott-oss">Støtt oss</a>
@@ -110,7 +113,7 @@ export default () => (
                 <div className="hdo-logo"></div> 
                 <h4>Holder de ord © 2017</h4>
                 <small>
-                    Spørsmål? Ta <a href="#">kontakt</a>
+                    Spørsmål? Ta <a href="mailto:kontakt@holderdeord.no">kontakt</a>
                 </small>
                 <div className="links">
                 <a href="https://www.holderdeord.no/portal">holderdeord.no</a>
