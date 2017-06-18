@@ -12,7 +12,7 @@ export default (props) => (
 
         <div className="promise-details">
             {props.result._source.promisor_name}, {props.result._source.parliament_period_name}
-            <div style={{float: 'right'}}>ID: {showIds ? props.result._id : null}</div>
+            {showIds ? <div style={{float: 'right'}}>ID: {props.result._id}</div> : null}
         </div>
     </div>
 );
