@@ -136,10 +136,20 @@ header {
     color: #000;
 }
 
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
 .promise-item {
     padding: .5rem 1rem;
 
     .promise-details {
+        padding-top: .5rem;
+        font-size: .8rem;
         color: $sk-text-secondary-color;
     }
 

@@ -1,3 +1,6 @@
+import qs from 'qs';
+
+
 export const translations = {
     "searchbox.placeholder": "Søk",
     "reset.clear_all": "Nullstill",
@@ -23,3 +26,4 @@ export const customHighlight = {
     }
 };
 
+export const urlQuery = qs.parse(window.location.search.slice(1));

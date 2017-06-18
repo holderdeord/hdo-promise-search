@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import qs from 'qs';
 import cn from 'classnames';
 
 import {
@@ -26,7 +25,8 @@ import PromiseItem from './PromiseItem';
 
 import {
     translations,
-    customHighlight
+    customHighlight,
+    urlQuery,
 } from './utils';
 
 const searchkit = new SearchkitManager('https://search.holderdeord.no/hdo_production_promises/');
@@ -52,7 +52,7 @@ export default class Search extends Component {
 
     performExampleQuery() {
         const accessor = searchkit.accessors.queryAccessor;
-        const queryString = qs.parse(window.location.search.slice(1)).q;
+        const queryString = urlQuery.q;
 
         if (!queryString || !queryString.length) {
             const exampleQueries = ["bompenger", "rushtidsavgift", "sexkjøpsloven", "atomvåpen", "formueskatt", "kontantstøtte", "oljeutvinning", "narkotika", "jernbane", "asylsøkere", "eiendomsskatt", "NATO", "EØS", "ulv", "ungdomsskolen", "lærere", "surrogati", "eggdonasjon", "arbeidsmiljøloven"]
