@@ -80,19 +80,27 @@ header {
     @extend .container;
 }
 
+.sk-top-bar {
+    position: relative;
+    box-shadow: none;
+
+    .sk-top-bar__content {
+        padding: 0;
+    }
+}
+
 .search {
     @extend .container;
     // box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28)
 }
 
 .filter-button {
+    margin: 5px 0 0 15px;
     background-image: $filter-icon;
     background-size: cover;
-    width: 25px;
-    height: 25px;
-    margin: 0.3rem 1rem;
+    width: 24px;
+    height: 24px;
     padding: 1rem;
-    border-radius: 10px;
     pointer: cursor;
 }
 
@@ -209,7 +217,7 @@ header {
     justify-content: center;
     align-items: center;
     position: relative;
-    padding: 1rem;
+    // padding: 0;
     text-align: center;
 
     @media (min-width: $breakpoint-md) {
@@ -220,13 +228,12 @@ header {
     .hdo-logo {
         position: relative;
         background-image: $hdo-logo;
-        margin-top: 1rem;
-        padding-top: 3rem;
-        background-position: 50% 0;
-        margin: 0;
-        text-align: center;
         background-repeat: no-repeat;
         background-size: auto 2.5rem;
+        margin: 1rem;
+        padding-top: 3rem;
+        background-position: 50% 0;
+        text-align: center;
         font-weight: 600;
         font-family: $font-family-serif;
 

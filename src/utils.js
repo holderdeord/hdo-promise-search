@@ -8,7 +8,7 @@ export const translations = {
     "NoHits.DidYouMean": "Søk etter {suggestion}",
     "NoHits.SearchWithoutFilters": "Søk etter {query} uten filtre",
     "NoHits.NoResultsFoundDidYouMean": "Ingen treff for {query}. Mente du «{suggestion}»?",
-    "hitstats.results_found": "{hitCount} løfter funnet etter {timeTaken} ms.",
+    "hitstats.results_found": "Fant {hitCount} løfter.",
     "pagination.previous": "Forrige",
     "pagination.next": "Neste"
 };
