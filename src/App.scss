@@ -1,4 +1,5 @@
 @import url("//fonts.googleapis.com/css?family=Roboto+Slab:400,700,300,100");
+
 @import url("//fonts.googleapis.com/css?family=Lato:400,700,300,100");
 
 $hdo-background-color: #fafafa;
@@ -15,10 +16,10 @@ $hdo-steel-blue-extra-dark: #455068;
 $hdo-outline-color: $hdo-steel-blue-extra-dark;
 
 $font-family-sans-serif: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, arial, sans-serif;
-$font-family-serif: "Roboto Slab", Palatino, "Times New Roman", serif;
+$font-family-serif: "Roboto Slab",Georgia,Palatino,"Times New Roman",Times,serif;
 
 $breakpoint-md: 650px;
-$breakpoint-lg: 940px;
+$breakpoint-lg: 1110px;
 
 body {
     margin: 0;
@@ -48,10 +49,12 @@ $sk-list-secondary-text-color: #777;
 $sk-action-text-color: $hdo-steel-blue-extra-dark !default;
 $sk-action-active-color: #000 !default;
 $sk-disabled-text-color: #ddd !default;
+
 // $sk-remove-action-color: #fa2a00 !default;
 
 $sk-selector-background: white !default;
 $sk-selector-active-background: $hdo-steel-blue-dark !default;
+
 // $sk-selector-border-color: #ccc !default;
 // $sk-selector-text-color: black !default;
 // $sk-selector-active-text-color: white !default;
@@ -70,7 +73,7 @@ $hdo-logo: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA2wAAAFfAgMAAABPc6f
 $filter-icon: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAAALklEQVR4Ae3TMREAQAwCwfdv+iOBJgWZ2UXAVTyAOn9nAnlQ+upMAPqeHQkcAjDB8g8ALyiZjwAAAABJRU5ErkJggg==);
 
 .container {
-    max-width: 940px;
+    max-width: $breakpoint-lg;
     margin: 0 auto;
 }
 
@@ -91,6 +94,7 @@ header {
 
 .search {
     @extend .container;
+
     // box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28)
 }
 
@@ -105,7 +109,9 @@ header {
 }
 
 @media (min-width: $breakpoint-lg) {
-    .filter-button { display: none; }
+    .filter-button {
+        display: none;
+    }
 }
 
 .sk-top-bar {
@@ -123,9 +129,9 @@ header {
     input.sk-search-box__text {
         color: $sk-text-color;
 
-        &::-webkit-input-placeholder  {
-          color: #bbb;
-          font-weight:100;
+        &::-webkit-input-placeholder {
+            color: #bbb;
+            font-weight: 100;
         }
     }
 }
@@ -227,6 +233,7 @@ header {
     justify-content: center;
     align-items: center;
     position: relative;
+
     // padding: 0;
     text-align: center;
 
@@ -255,13 +262,6 @@ header {
             width: 100%;
             cursor: pointer;
         }
-    }
-
-    h1 {
-        font-family: $font-family-serif;
-        font-weight: 400;
-        margin-bottom: .2rem;
-        margin-top: 0;
     }
 
     .header-links {
@@ -350,3 +350,94 @@ footer {
     }
 }
 
+.hdo-card {
+    background-color: #fff;
+    box-shadow: 0 -1px 0 #e5e5e5, 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+    margin-top: 2rem;
+
+    .hdo-card-header {
+        background-color: $hdo-background-color;
+        margin-left: 0;
+        margin-right: 0;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        box-shadow: 0 1px rgba(0, 0, 0, 0.12);
+
+        $border-color: #ddd;
+
+        &.top-border {
+            border-top: 1px solid $border-color;
+        }
+
+        &.bottom-border {
+            border-bottom: 1px solid $border-color;
+        }
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: .5rem auto;
+    font-family: $font-family-serif;
+    font-weight: 400;
+    line-height: 1.1;
+    color: inherit;
+}
+
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+
+.lead {
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+
+
+.other-services {
+    text-align: center;
+    max-width: $breakpoint-lg;
+    margin: 0 1rem 1rem;
+
+    @media (min-width: $breakpoint-lg) {
+        margin: 0 auto 1rem;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .other-services-row {
+        &::after {
+          content: "";
+          display: table;
+          clear: both;
+        }
+    }
+
+
+
+    .service {
+        width: 100%;
+
+        @media (min-width: $breakpoint-md) {
+            position: relative;
+            width: 50%;
+            float: left;
+        }
+
+        filter: grayscale(0.4);
+        transition: all 0.3s ease;
+
+        .img {
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 200px;
+            background-position: 50% 50%;
+        }
+
+        &:hover {
+            filter: none;
+            background-color: lighten(#b8bfcc, 15%);
+        }
+    }
+}

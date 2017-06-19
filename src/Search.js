@@ -23,19 +23,17 @@ import {
 
 import PromiseItem from './PromiseItem';
 
-import {
-    translations,
-    customHighlight,
-    urlQuery,
-} from './utils';
+import { translations, customHighlight, urlQuery } from './utils';
 
-const searchkit = new SearchkitManager('https://search.holderdeord.no/hdo_production_promises/');
-searchkit.translateFunction = (key) => translations[key]
+const searchkit = new SearchkitManager(
+    'https://search.holderdeord.no/hdo_production_promises/'
+);
+searchkit.translateFunction = key => translations[key];
 
 searchkit.setQueryProcessor(query => {
     if (!query.query) {
         // empty query! sort by period name descending
-        query.sort = { parliament_period_name: { order: 'desc' }};
+        query.sort = { parliament_period_name: { order: 'desc' } };
     }
 
     return query;
@@ -55,8 +53,31 @@ export default class Search extends Component {
         const queryString = urlQuery.q;
 
         if (!queryString || !queryString.length) {
-            const exampleQueries = ["bompenger", "rushtidsavgift", "sexkjøpsloven", "atomvåpen", "formueskatt", "kontantstøtte", "oljeutvinning", "narkotika", "jernbane", "asylsøkere", "eiendomsskatt", "NATO", "EØS", "ulv", "ungdomsskolen", "lærere", "surrogati", "eggdonasjon", "arbeidsmiljøloven"]
-            const example = exampleQueries[Math.floor(Math.random() * exampleQueries.length)]
+            const exampleQueries = [
+                'bompenger',
+                'rushtidsavgift',
+                'sexkjøpsloven',
+                'atomvåpen',
+                'formueskatt',
+                'kontantstøtte',
+                'oljeutvinning',
+                'narkotika',
+                'jernbane',
+                'asylsøkere',
+                'eiendomsskatt',
+                'NATO',
+                'EØS',
+                'ulv',
+                'ungdomsskolen',
+                'lærere',
+                'surrogati',
+                'eggdonasjon',
+                'arbeidsmiljøloven'
+            ];
+            const example =
+                exampleQueries[
+                    Math.floor(Math.random() * exampleQueries.length)
+                ];
 
             accessor.setQueryString(example);
             searchkit.performSearch();
@@ -71,18 +92,26 @@ export default class Search extends Component {
                         <TopBar>
                             <div
                                 className="filter-button"
-                                onClick={() => this.setState({filtersShown: !this.state.filtersShown})}
+                                onClick={() =>
+                                    this.setState({
+                                        filtersShown: !this.state.filtersShown
+                                    })}
                             />
 
                             <SearchBox
                                 autofocus
                                 searchOnChange
-                                prefixQueryFields={["body"]}
+                                prefixQueryFields={['body']}
                             />
                         </TopBar>
 
                         <LayoutBody>
-                            <SideBar className={cn('filters', {'filters-hidden-md': !this.state.filtersShown})}>
+                            <SideBar
+                                className={cn('filters', {
+                                    'filters-hidden-md': !this.state
+                                        .filtersShown
+                                })}
+                            >
                                 <RefinementListFilter
                                     id="period"
                                     title="Stortingsperiode"
@@ -110,17 +139,17 @@ export default class Search extends Component {
 
                             <LayoutResults>
                                 <ActionBar>
-                                  <ActionBarRow>
-                                    <HitsStats />
-                                    <SelectedFilters />
-                                  </ActionBarRow>
+                                    <ActionBarRow>
+                                        <HitsStats />
+                                        <SelectedFilters />
+                                    </ActionBarRow>
                                 </ActionBar>
 
                                 <Hits
-                                  hitsPerPage={30}
-                                  highlightFields={["body"]}
-                                  customHighlight={customHighlight}
-                                  itemComponent={PromiseItem}
+                                    hitsPerPage={30}
+                                    highlightFields={['body']}
+                                    customHighlight={customHighlight}
+                                    itemComponent={PromiseItem}
                                 />
 
                                 <NoHits suggestionsField="body" />
@@ -134,12 +163,11 @@ export default class Search extends Component {
 
                                 <PaginationSelect />
 
-                          </LayoutResults>
+                            </LayoutResults>
                         </LayoutBody>
-                      </Layout>
+                    </Layout>
                 </SearchkitProvider>
             </div>
         );
     }
 }
-
