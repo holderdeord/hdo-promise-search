@@ -7,11 +7,17 @@ export default props =>
             <h4>Holder de ord &copy; 2017</h4>
 
             <small>
-                <p>
-                    <a href="https://files.holderdeord.no/data/csv/promises.csv">
-                        Last ned hele databasen som CSV.
-                    </a>
-                </p>
+                <div>
+                    Kildekode på <a href="https://github.com/holderdeord/hdo-promise-search">GitHub</a> lisensiert under <a href="http://opensource.org/licenses/BSD-3-Clause">BSD</a>.
+
+                    <div>
+                        Du kan også <a href="https://files.holderdeord.no/data/csv/promises.csv">
+                            laste ned hele løftebasen som CSV
+                        </a>.
+                    </div>
+                </div>
+
+
                 <p>
                     Spørsmål? Ta{' '}
                     <a href="mailto:kontakt@holderdeord.no">kontakt</a>.
