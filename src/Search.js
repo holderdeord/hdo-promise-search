@@ -124,7 +124,7 @@ export default class Search extends Component {
                                     id="parties"
                                     title="Partier og regjeringer"
                                     field="promisor_name"
-                                    size={10}
+                                    size={20}
                                     operator="OR"
                                     orderKey="_term"
                                 />
