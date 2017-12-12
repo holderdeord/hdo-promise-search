@@ -117,6 +117,7 @@ export default class Search extends Component {
                                     title="Stortingsperiode"
                                     field="parliament_period_name"
                                     size={10}
+                                    operator="OR"
                                     orderKey="_term"
                                 />
 
