@@ -10,7 +10,7 @@ export default () => (
     <div>
         <Header />
         <div className="container">
-            <div className="alert alert-info" style={{ display: "none" }}>
+            <div className="alert alert-info">
                 <strong>Holder de ord</strong> legges ned i løpet av 2020. Denne
                 tjenesten vil ikke bli oppdatert.
             </div>
